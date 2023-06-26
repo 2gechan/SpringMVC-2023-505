@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@RequestMapping(value="/user")
 public class UserController {
 	
 	@Autowired
@@ -25,7 +26,7 @@ public class UserController {
 	}
 	*/
 	
-	@RequestMapping(value="/user/list", method=RequestMethod.GET)
+	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String userList(Model model) {
 		List<UserDto> userList = userService.selectAll();
 		model.addAttribute("USERS", userList);
@@ -33,18 +34,17 @@ public class UserController {
 		return "user/list";
 	}
 	
-	@RequestMapping(value="/user/input", method=RequestMethod.GET)
+	@RequestMapping(value="/input", method=RequestMethod.GET)
 	public String userInput(Model model) {
 		
 		return "user/input";
 	}
 	
-	@RequestMapping(value="/user/input", method=RequestMethod.POST)
-	public String userInput(UserDto userDto) {
-		
+	@RequestMapping(value="/input", method=RequestMethod.POST)
+	public String userInput(UserDto userDto, Model model) {
 		log.debug(userDto.toString());
-
-		return null;
+		model.addAttribute("USER", userDto);
+		return "user/view";
 	}
-
+	
 }

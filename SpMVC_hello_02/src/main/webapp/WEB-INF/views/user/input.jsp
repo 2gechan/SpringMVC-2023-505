@@ -16,9 +16,6 @@
 			<input name="password" placeholder="password" />
 		</div>
 		<div>
-			<input name="password" placeholder="password 확인" />
-		</div>
-		<div>
 			<input name="name" placeholder="이름" />
 		</div>
 		<div>
