@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+table {
+	width: 80%;
+	margin: 10px auto;
+	/* table 생성시 collapse를 속성을 사용해야 테이블간 여백이 없다 */
+	border-collapse: collapse;
+}
+
+table.main.list th {
+	border-top: 2px solid #ccc;
+}
+
+table.main.list th, table.main.list td {
+	text-align: left;
+	padding: 5px 8px;
+	border-bottom: 2px solid #ccc;
+	border-right: 2px solid #ccc;
+}
+
+table.main.list th:last-of-type, table.main.list td:last-of-type {
+	border-right: none;
+}

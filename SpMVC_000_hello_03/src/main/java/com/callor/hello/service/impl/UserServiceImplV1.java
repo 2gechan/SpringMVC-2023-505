@@ -28,6 +28,4 @@ public class UserServiceImplV1 implements UserService {
 		return null;
 	}
 	
-	
-
 }
