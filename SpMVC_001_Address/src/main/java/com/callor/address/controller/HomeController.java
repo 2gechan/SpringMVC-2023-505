@@ -1,4 +1,4 @@
-package com.callor.address;
+package com.callor.address.controller;
 
 import java.util.Locale;
 
