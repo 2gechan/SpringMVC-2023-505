@@ -13,7 +13,7 @@
 	rel="stylesheet" />
 <link href="${rootPath}/static/css/button.css?20230628-001"
 	rel="stylesheet" />
-<link href="${rootPath}/static/css/form.css?20230628-002"
+<link href="${rootPath}/static/css/form.css?20230629-006"
 	rel="stylesheet" />
 
 <script>
@@ -22,7 +22,7 @@
 	var rootPath = "${rootPath}"
 </script>
 <!-- vscode에서 작업한 js파일은 sts에서 x표시로 에러가 있다고 나타나지만 무시해도 된다. -->
-<script src="${rootPath}/static/js/input.js?20230629-003"></script>
+<script src="${rootPath}/static/js/input.js?20230629-009"></script>
 </head>
 <body>
 	<header>

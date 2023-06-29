@@ -83,8 +83,6 @@
 			<version>2.15.2</version>
 		</dependency>
 
-
-
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

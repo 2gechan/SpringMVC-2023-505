@@ -29,13 +29,14 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds" />
+		<!-- dto 객체 -->
 		<property name="typeAliasesPackage" value="com.callor.address.models" />
 		<property name="mapperLocations" value="/WEB-INF/spring/mapper/*-mapper.xml"/>
 	</bean>
 	
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<!-- 생성자 매개변수 -->
-		<constructor-arg ref="sqlSessionFactory"/>
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 	
 	<!-- mybatis에게 ...dao page에 있는 interface를 scan 하여

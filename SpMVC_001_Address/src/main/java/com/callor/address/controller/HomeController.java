@@ -35,6 +35,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	@ResponseBody
+	public List<AddrDto> list() {
+		List<AddrDto> addrList = addrDao.selectAll();
+		return addrList;
+		
+	}
+	
 	/*
 	 * localhost:8080/address/insert 로 요청이 오면
 	 * addr/input.jsp 파일을 열어서 Response 하도록 method 생성
@@ -81,6 +89,21 @@ public class HomeController {
 	public String insert() {
 		
 		return "addr/input";
+	}
+	
+	@RequestMapping(value="/id_check", method=RequestMethod.GET)
+	@ResponseBody
+	public String idCheck(String id) {
+		
+		AddrDto addrDto = addrDao.findById(id);
+		if(addrDto == null ) {
+			return "OK";
+//		} else if(addrDto.getA_id().equals(id)) {
+//			return "FAIL";
+		} else {
+			return "FAIL";
+		}
+		
 	}
 	
 }
