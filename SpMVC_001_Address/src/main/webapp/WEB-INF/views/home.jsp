@@ -7,10 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${rootPath}/static/css/main.css?20230628-001" rel="stylesheet" />
-<link href="${rootPath}/static/css/table.css?20230628-001" rel="stylesheet" />
-<link href="${rootPath}/static/css/button.css?20230628-001" rel="stylesheet" />
-<link href="${rootPath}/static/css/form.css?20230628-002" rel="stylesheet" />
+<link href="${rootPath}/static/css/main.css?20230628-001"
+	rel="stylesheet" />
+<link href="${rootPath}/static/css/table.css?20230628-001"
+	rel="stylesheet" />
+<link href="${rootPath}/static/css/button.css?20230628-001"
+	rel="stylesheet" />
+<link href="${rootPath}/static/css/form.css?20230628-002"
+	rel="stylesheet" />
+
+<script>
+	// JSP 에서 사용하는 rootPath 변수를
+	// JS 코드에서 사용하기 위한 rootPath 변수로 재 설정
+	var rootPath = "${rootPath}"
+</script>
+<!-- vscode에서 작업한 js파일은 sts에서 x표시로 에러가 있다고 나타나지만 무시해도 된다. -->
+<script src="${rootPath}/static/js/input.js?20230629-003"></script>
 </head>
 <body>
 	<header>
