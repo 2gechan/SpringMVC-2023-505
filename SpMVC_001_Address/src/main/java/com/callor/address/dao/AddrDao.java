@@ -2,6 +2,7 @@ package com.callor.address.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 
 import com.callor.address.models.AddrDto;
@@ -23,6 +24,12 @@ public interface AddrDao {
 	@Select("select * from tbl_address where a_id = #{id}")
 	public AddrDto findById(String id);
 	
-	@Select("select * from tbl_address where a_name like '%' || #{name} || '%'")
 	public List<AddrDto> findByName(String name);
+
+	public int insert(AddrDto addrDto);
+
+	public int update(AddrDto addrDto);
+
+	@Delete("delete from tbl_address where a_id = #{id}")
+	public int delete(String id);
 }

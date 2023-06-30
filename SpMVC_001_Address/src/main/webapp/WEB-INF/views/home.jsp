@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
-<c:set value="${20230630-003}" var="version" />
+<c:set value="${20230630-008}" var="version" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +18,8 @@
 	rel="stylesheet" />
 <link href="${rootPath}/static/css/list.css?${version}"
 	rel="stylesheet" />
+	<link href="${rootPath}/static/css/detail.css?${version}"
+	rel="stylesheet" />
 
 <script>
 	// JSP 에서 사용하는 rootPath 변수를
@@ -26,6 +28,7 @@
 </script>
 <!-- vscode에서 작업한 js파일은 sts에서 x표시로 에러가 있다고 나타나지만 무시해도 된다. -->
 <script src="${rootPath}/static/js/input.js?${version}"></script>
+<script src="${rootPath}/static/js/list.js?${version}"></script>
 </head>
 <body>
 	<header>
@@ -40,6 +43,9 @@
 		</c:if>
 		<c:if test="${BODY == 'INPUT'}">
 			<%@ include file="/WEB-INF/views/addr/input.jsp"%>
+		</c:if>
+		<c:if test="${BODY == 'DETAIL'}">
+			<%@ include file="/WEB-INF/views/addr/detail.jsp"%>
 		</c:if>
 	</section>
 	<footer>

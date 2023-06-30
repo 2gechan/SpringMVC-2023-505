@@ -10,14 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // DOM 객체(tag 객체)
   const form_addr = document.querySelector("form.main.input");
-  const input_id = form_addr.querySelector("input[name='a_id']");
-  const input_name = form_addr.querySelector("input[name='a_name']");
-  const input_tel = form_addr.querySelector("input[name='a_tel']");
-  const input_addr = form_addr.querySelector("input[name='a_addr']");
-  const btn_input = form_addr.querySelector("button.input");
-  const btn_list = form_addr.querySelector("button.list");
+  const input_id = form_addr?.querySelector("input[name='a_id']");
+  const input_name = form_addr?.querySelector("input[name='a_name']");
+  const input_tel = form_addr?.querySelector("input[name='a_tel']");
+  const input_addr = form_addr?.querySelector("input[name='a_addr']");
 
-  const msg_boxs = document.querySelectorAll("div.message");
+  const btn_input = form_addr?.querySelector("button.input");
+  const btn_list = form_addr?.querySelector("button.list");
+
+  const msg_boxs = document?.querySelectorAll("div.message");
 
   // 2개의 매개변수를 받는 함수 선언
   const message_view = (index, className, message) => {
@@ -39,6 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // event call 함수를 선언하고
   const inputButtonClickHandler = (e) => {
     // alert("추가 버튼 클릭")
+
+    for (let i = 0; i < msg_boxs.length; i++) {
+      msg_boxs[i].classList.remove("ok");
+      msg_boxs[i].classList.remove("error");
+    }
 
     if (!input_id.value) {
       message_view(INDEX.ID, "error", "* ID는 반드시 입력해야 합니다.");
@@ -78,12 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!input_addr.value) {
       message_view(INDEX.ADDR, "error", "* 주소는 반드시 입력해야 합니다");
       input_addr.focus();
+      input_addr.select();
       return false;
     }
 
-    // JS 코드에서 form에 포함된 button을 클릭했을때
-    // Server로 데이터를 전송하라
-    addr_input?.submit();
+    if (confirm("저장할까요")) {
+      // JS 코드에서 form에 포함된 button을 클릭했을때
+      // Server로 데이터를 전송하라
+      form_addr?.submit();
+    }
   };
 
   // 선언된 event call 함수를 사용하여 click event 선언
