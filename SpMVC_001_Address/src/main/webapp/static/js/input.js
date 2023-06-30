@@ -52,6 +52,35 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
+    if (!input_name.value) {
+      message_view(INDEX.NAME, "error", "* 이름은 반드시 입력해야 합니다");
+      input_name.focus();
+      return false;
+    }
+
+    if (!input_tel.value) {
+      message_view(INDEX.TEL, "error", "* 전화번호는 반드시 입력해야 합니다");
+      input_tel.focus();
+      return false;
+    }
+    const tel_rexp = /^\d{3}-\d{3,4}-\d{4}$/;
+    if (!tel_rexp.test(input_tel.value)) {
+      message_view(
+        INDEX.TEL,
+        "error",
+        "전화번호 형식이 틀립니다(000-0000-0000)"
+      );
+      input_tel.focus();
+      input_tel.select();
+      return false;
+    }
+
+    if (!input_addr.value) {
+      message_view(INDEX.ADDR, "error", "* 주소는 반드시 입력해야 합니다");
+      input_addr.focus();
+      return false;
+    }
+
     // JS 코드에서 form에 포함된 button을 클릭했을때
     // Server로 데이터를 전송하라
     addr_input?.submit();
