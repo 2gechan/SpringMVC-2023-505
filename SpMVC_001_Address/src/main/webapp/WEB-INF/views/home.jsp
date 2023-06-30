@@ -2,18 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
+<c:set value="${20230630-002}" var="version" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${rootPath}/static/css/main.css?20230628-001"
+<link href="${rootPath}/static/css/main.css?${version}"
 	rel="stylesheet" />
-<link href="${rootPath}/static/css/table.css?20230628-001"
+<link href="${rootPath}/static/css/table.css?${version}"
 	rel="stylesheet" />
-<link href="${rootPath}/static/css/button.css?20230628-001"
+<link href="${rootPath}/static/css/button.css?${version}"
 	rel="stylesheet" />
-<link href="${rootPath}/static/css/form.css?20230629-006"
+<link href="${rootPath}/static/css/form.css?${version}"
+	rel="stylesheet" />
+<link href="${rootPath}/static/css/list.css?${version}"
 	rel="stylesheet" />
 
 <script>
@@ -22,7 +25,7 @@
 	var rootPath = "${rootPath}"
 </script>
 <!-- vscode에서 작업한 js파일은 sts에서 x표시로 에러가 있다고 나타나지만 무시해도 된다. -->
-<script src="${rootPath}/static/js/input.js?20230629-009"></script>
+<script src="${rootPath}/static/js/input.js?${version}"></script>
 </head>
 <body>
 	<header>
