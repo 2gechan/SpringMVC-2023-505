@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+}
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgb(208, 233, 248);
+}
+
+.wrapper {
+  background-color: rgb(108, 190, 241);
+  width: 700px;
+  height: 90%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  border: 2px solid rgba(89, 153, 226, 0.7);
+  border-radius: 20px;
+  box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+  font-family: "Dongle", sans-serif;
+  text-decoration: none;
+}
+
+.findTitle {
+  width: 300px;
+  height: 47px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 47px;
+  color: #0068ff;
+  border: 1px;
+  font-family: "Dongle", sans-serif;
+}
+
+.subTitle {
+  margin-right: 100px;
+  background-color: rgb(30, 144, 219);
+  border-radius: 20px;
+  font-size: 30px;
+  width: 200px;
+  color: rgb(75, 75, 75);
+}
+
+.form {
+  width: 300px;
+  font-family: "Dongle", sans-serif;
+  font-size: 20px;
+}
+
+/* 집가서 div 넣고 해보기 ㅇㅇ article.dept {
+  display: flex;
+  border: 1px solid green;
+  margin: 3px;
+  padding: 8px;
+} */
+
+.form,
+.area,
+.gender {
+  width: 300px;
+  background: #b9def3;
+  font-family: "Dongle", sans-serif;
+  font-size: 25px;
+  text-align: center;
+  border: 1px solid #d2d2d2;
+  border-radius: 7px;
+}
+
+.find_button {
+  margin-left: 200px;
+  font-family: "Dongle", sans-serif;
+  font-size: 25px;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid #0068ff;
+  color: #0068ff;
+}
+
+.find_button:hover {
+  background-color: #b9def3;
+  cursor: pointer;
+}
+
+h1 a {
+  display: block;
+  height: 70px;
+  color: rgb(36, 105, 233);
+  font-size: 70px;
+  font-family: "Dongle", sans-serif;
+  text-decoration: none;
+}
+
+h1 a:hover {
+  border-bottom: 3px solid rgb(90, 147, 201);
+}

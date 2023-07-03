@@ -1,0 +1,39 @@
+h1 a {
+  display: inline-block;
+  height: 30px;
+}
+form {
+  margin-top: 10px;
+  font-size: 35px;
+  font-family: "Dongle", sans-serif;
+}
+
+form#gu {
+  display: inline;
+}
+
+#middle {
+  height: 850px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#area {
+  /* background-color: gray; */
+  margin-top: 10px;
+  width: 700px;
+  height: 100%;
+}
+
+img.areaArr {
+  display: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 60px;
+}

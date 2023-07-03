@@ -46,8 +46,7 @@ public class HomeController {
 	}
 
 	/*
-	 * localhost:8080/address/insert 로 요청이 오면
-	 * addr/input.jsp 파일을 열어서 Response 하도록
+	 * localhost:8080/address/insert 로 요청이 오면 addr/input.jsp 파일을 열어서 Response 하도록
 	 * method 생성
 	 */
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
@@ -56,26 +55,22 @@ public class HomeController {
 		model.addAttribute("BODY", "INPUT");
 
 		/*
-		 * Controller 의 문자열 method에서 문자열을 return하면
-		 * "/views/문자열.jsp" 파일을 rendering하여
+		 * Controller 의 문자열 method에서 문자열을 return하면 "/views/문자열.jsp" 파일을 rendering하여
 		 * Client로 Response를 하라 라는 의미
 		 */
 		return "home";
 	}
 
 	/*
-	 * produces Server가 Browser에 데이터를 응답할 때
-	 * 한글이 포함되어 있으면 Encoding을 하여서 보내라 View에
+	 * produces Server가 Browser에 데이터를 응답할 때 한글이 포함되어 있으면 Encoding을 하여서 보내라 View에
 	 * rendering을 할 때는 의미가 없다
 	 * 
 	 * @ResponseBody가 설정되어 있을 때
 	 */
 	@RequestMapping(value = "/insert", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	/*
-	 * Controller의 method에 @ResponseBody Annotation이 부착되면
-	 * 문자열을 그대로(direct) Client로 Response하라 라는 의미
-	 * JSP파일을 rendering하지 않는다.
-	 * 단순하게 데이터를 확인하기 위한 용도로 사용할 수 있다.
+	 * Controller의 method에 @ResponseBody Annotation이 부착되면 문자열을 그대로(direct) Client로
+	 * Response하라 라는 의미 JSP파일을 rendering하지 않는다. 단순하게 데이터를 확인하기 위한 용도로 사용할 수 있다.
 	 */
 	// @ResponseBody
 	/*
@@ -108,23 +103,69 @@ public class HomeController {
 		return addrService.idCheck(id);
 
 		/*
-		 * AddrDto addrDto = addrService.findById(id);
-		 * if(addrDto == null ) {
-		 * return "OK";
-		 * } else if(addrDto.getA_id().equals(id)) {
-		 * return "FAIL";
-		 * } else {
-		 * return "FAIL";
-		 * }
+		 * AddrDto addrDto = addrService.findById(id); if(addrDto == null ) { return
+		 * "OK"; } else if(addrDto.getA_id().equals(id)) { return "FAIL"; } else {
+		 * return "FAIL"; }
 		 */
 	}
-	
-	@RequestMapping(value="/detail", method=RequestMethod.GET)
+
+	/*
+	 * localhost:8080/addr/detail?id=A0001 형식으로 request가 오면 id=A0001에 설정된 A0001 값을
+	 * id 매개변수로 받는다. URL : localhost:8080/addr queryString : detail?id=A0001
+	 */
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(Model model, String id) {
+		// request에 설정된 id 값으로 DB table에서 주소 정보를 Select
 		AddrDto addrDto = addrService.findById(id);
+
+		// select된 주소를 model에 담아서 view로 전달
 		model.addAttribute("ADDR", addrDto);
+
+		// home.jsp에 include되어 보여질 화면 세팅
 		model.addAttribute("BODY", "DETAIL");
 		return "home";
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(String id) {
+
+		int result = addrService.delete(id);
+
+		if (result > 0) {
+			return "redirect:/";
+		} else {
+			// 삭제에 실패했을 경우
+			// 현재 id의 detail 화면으로 되돌아 가라
+			return "redirect:/detail?id=" + id;
+		}
+
+	}
+
+	// 데이터 Update할 화면 보여주기
+	// Spring에서는 RequestMapping을 참조하여
+	// update Getter method라고 부른다.
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String update(String id, Model model) {
+
+		// 변경할 주소 데이터 Select하여 model에 담기
+		AddrDto dto = addrService.findById(id);
+		model.addAttribute("ADDR", dto);
+		model.addAttribute("BODY", "UPDATE");
+
+		return "home";
+
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute AddrDto dto) {
+
+		int result = addrService.update(dto);
+		String id = dto.getA_id();
+		if (result > 0) {
+			return "redirect:/detail?id=" + id;
+		} else {
+			return "redirect:/update?id=" + id;
+		}
 	}
 
 }
