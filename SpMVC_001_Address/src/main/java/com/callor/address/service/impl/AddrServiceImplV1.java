@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.callor.address.dao.AddrDao;
 import com.callor.address.dao.BuyerDao;
+import com.callor.address.dao.HobbyDao;
 import com.callor.address.dao.ScoreDao;
 import com.callor.address.models.AddrDto;
+import com.callor.address.models.HobbyByAidVO;
 import com.callor.address.service.AddrService;
 
 @Service
@@ -61,9 +63,12 @@ public class AddrServiceImplV1 implements AddrService {
 	 * NullPointer Exception이 발생한다.
 	 */
 	protected final AddrDao addrDao;
-	public AddrServiceImplV1(AddrDao addrDao) {
-		// TODO Auto-generated constructor stub
+	protected final HobbyDao hobbyDao;
+
+	public AddrServiceImplV1(AddrDao addrDao, HobbyDao hobbyDao) {
+		super();
 		this.addrDao = addrDao;
+		this.hobbyDao = hobbyDao;
 	}
 
 	/*
@@ -90,6 +95,16 @@ public class AddrServiceImplV1 implements AddrService {
 	@Override
 	public AddrDto findById(String id) {
 		
+		// id에 해당하는 주소 조회
+		AddrDto addrDto = addrDao.findById(id);
+		
+		// id에 해당하는 취미 리스트 조회
+		List<HobbyByAidVO> hobbyList = hobbyDao.findHobbyByAID(id);
+		
+		// 주소 객체에 취미 리스트 포함
+		addrDto.setHobbyList(hobbyList);
+		
+		// 주소 객체 return
 		return addrDao.findById(id);
 	}
 
