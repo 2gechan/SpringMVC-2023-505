@@ -7,33 +7,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TO DO List</title>
+<title>To Do List</title>
 
-<link href="${rootPath}/resources/css/main.css?${version}" rel="stylesheet" />
+<link href="${rootPath}/resources/css/main.css?${version}"
+	rel="stylesheet" />
 </head>
 <body>
-	<h1>TO DO List 2023</h1>
-	<form action="">
-		<input value="${DATE}" />
-		<input value="${TIME}" />
-		<input placeholder="할일" class="todo" />
-	</form>
-	<table>
-		<tr>
-			<th>NO.</th>
-			<th>할 일</th>
-			<th>완료여부</th>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
+	<header>
+		<h1>TO DO List 2023</h1>
+	</header>
+
+	<section class="main">
+		<form action="">
+			<input value="${DATE}" placeholder="작성일자" /> <input value="${TIME}" placeholder="작성시각" /> <input
+				placeholder="할일" class="todo" />
+		</form>
+		<table>
+			<tr>
+				<th>NO.</th>
+				<th>할 일</th>
+				<th>완료여부</th>
+			</tr>
+			<tr>
+				<td>2023-07-06</td>
+				<td>14:20:00</td>
+				<td>팀프로젝트</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</section>
+
 </body>
 </html>

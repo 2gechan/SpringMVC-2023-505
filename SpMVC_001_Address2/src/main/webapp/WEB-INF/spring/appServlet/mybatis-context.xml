@@ -23,16 +23,20 @@
 		<property name="password" value="12341234" />
 	</bean>
 
-	<bean id="mySQL_DS" class="org.apache.commons.dbcp2.BasicDataSource">
-	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-	<property name="url" value="jdbc:mysql://localhost:3306/addrDB"></property>
-	<property name="username" value="root"></property>
-	<property name="password" value="!Biz8080"></property>
+	<bean id="mySQL_DS"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/addrDB"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="!Biz8080"></property>
 	</bean>
 
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="mySQL_DS" />
+
 		<!-- dto 객체 -->
 		<property name="typeAliasesPackage"
 			value="com.callor.address.models" />
@@ -40,9 +44,22 @@
 			value="/WEB-INF/spring/mapper/*-mapper.xml" />
 	</bean>
 
+	<!-- 아래 코드에서 System.in 을 constructor argument 라고 한다 Scanner scan = new Scanner(System.in); 
+		SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory); -->
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<!-- 생성자 매개변수 -->
 		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	<!-- transactionManager 객체와 연계하여 Annotation 방식으로 transaction 을 관리 하도록 설정하겠다 
+		만약 transactionManager 의 id 가 transactionManager 일 경우 transaction-manager="transactionManager" 
+		속성은 생략 가능하다 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<!-- DBMS 와 연계하여 Transaction 을 자동화 시킬 객체 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="mySQL_DS" />
 	</bean>
 
 	<!-- mybatis에게 ...dao page에 있는 interface를 scan 하여 @Select, @Insert, @Update, 

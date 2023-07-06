@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100vw;
+}
+
+header {
+  width: 60%;
+  margin: 0px auto;
+  background-image: linear-gradient(green, rgb(150, 243, 150));
+}
+
+section.main {
+  width: 60%;
+  margin: 10px auto;
+}
