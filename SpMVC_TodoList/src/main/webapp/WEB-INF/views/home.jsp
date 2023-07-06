@@ -9,8 +9,7 @@
 <meta charset="UTF-8">
 <title>To Do List</title>
 
-<link href="${rootPath}/resources/css/main.css?${version}"
-	rel="stylesheet" />
+<link href="${rootPath}/static/css/main.css?${version}" rel="stylesheet" />
 </head>
 <body>
 	<header>
@@ -18,26 +17,25 @@
 	</header>
 
 	<section class="main">
-		<form action="">
-			<input value="${DATE}" placeholder="작성일자" /> <input value="${TIME}" placeholder="작성시각" /> <input
-				placeholder="할일" class="todo" />
+		<form class="main">
+			<input type="date" value="${TODO.to_sdate}" placeholder="작성일자"
+				name="to_sdate" /> <input type="time" value="${TODO.to_stime}"
+				placeholder="작성시각" name="to_stime" /> <input placeholder="할일"
+				class="todo" name="to_content" />
 		</form>
-		<table>
-			<tr>
-				<th>NO.</th>
-				<th>할 일</th>
-				<th>완료여부</th>
-			</tr>
-			<tr>
-				<td>2023-07-06</td>
-				<td>14:20:00</td>
-				<td>팀프로젝트</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td></td>
-				<td></td>
-			</tr>
+		<table class="list">
+			<c:if test="${empty TODOS}">
+				<tr>
+					<td>데이터가 없습니다.</td>
+				</tr>
+			</c:if>
+			<c:forEach items="${TODOS}" var="TO">
+				<tr>
+					<td>${TO.to_sdate}</td>
+					<td>${TO.to_stime}</td>
+					<td>${TO.to_content}</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</section>
 

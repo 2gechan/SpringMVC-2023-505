@@ -17,7 +17,7 @@
 			<a href="${rootPath}/">시외버스</a>
 		</h1>
 		<div class="signUpTitle">시외버스 회원가입</div>
-		<form action="">
+		<form action="" method="GET">
 			<div>
 				<input class="form" id="email" placeholder="ID를 입력해주세요." />
 			</div>
