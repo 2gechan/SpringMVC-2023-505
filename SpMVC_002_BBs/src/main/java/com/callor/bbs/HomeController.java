@@ -15,9 +15,7 @@ import com.callor.bbs.models.BBsDto;
 public class HomeController {
 	
 	private final BBsDao bbsDao;
-	
 	public HomeController(BBsDao bbsDao) {
-	
 		this.bbsDao = bbsDao;
 	}
 

@@ -8,7 +8,7 @@ import com.callor.bbs.models.BBsDto;
 
 public interface BBsDao {
 	
-	@Select("select * from tbl_bbs order by b_date desc, b_time desc")
+	@Select("SELECT * FROM tbl_bbs ORDER BY b_date DESC, b_time DESC ")
 	public List<BBsDto> selectAll();
 
 }

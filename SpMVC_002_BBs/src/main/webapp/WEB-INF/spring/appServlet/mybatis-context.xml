@@ -12,29 +12,38 @@
 		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 
-	<!-- datasource -->
-	<bean id="dataSource"
+	<bean id="mySQL_DS"
 		class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/bbsdb" />
+			value="jdbc:mysql://localhost:3306/bbsDB" />
 		<property name="username" value="root" />
 		<property name="password" value="!Biz8080" />
 	</bean>
 
-	<!-- sqlSessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="com.callor.bbs.models" />
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="mySQL_DS" />
+		<property name="typeAliasesPackage"
+			value="com.callor.bbs.models" />
 		<property name="mapperLocations"
 			value="/WEB-INF/spring/mapper/*-mapper.xml" />
 	</bean>
 
-	<!-- sqlSessionTemplate -->
-	<!-- <bean class="org.mybatis.spring.SqlSessionTemplate">
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
- -->
+
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<!-- DBMS 와 연계하여 Transaction 을 자동화 시킬 객체 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="mySQL_DS" />
+	</bean>
+	<mybatis-spring:scan
+		base-package="com.callor.bbs.dao" />
 
 </beans>
