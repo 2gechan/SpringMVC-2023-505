@@ -13,19 +13,29 @@ import com.callor.bbs.models.BBsDto;
 
 @Controller
 public class HomeController {
-	
+
 	private final BBsDao bbsDao;
+
 	public HomeController(BBsDao bbsDao) {
 		this.bbsDao = bbsDao;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		
-		List<BBsDto> bbsList = bbsDao.selectAll();
+
+		// List<BBsDto> bbsList = bbsDao.selectAll();
+		List<BBsDto> bbsList = bbsDao.findUserSelectLimit();
 		model.addAttribute("BBS_LIST", bbsList);
-		
+
 		return "home";
 	}
-	
+
+	@RequestMapping(value = "/detail/seq", method = RequestMethod.GET)
+	public String detail(Long seq, Model model) {
+		BBsDto dto = bbsDao.findById(seq);
+		model.addAttribute("BBS", dto);
+		
+		return "detail";
+	}
+
 }

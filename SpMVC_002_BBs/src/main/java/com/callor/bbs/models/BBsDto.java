@@ -17,6 +17,10 @@ public class BBsDto {
 	private String b_date;		//varchar(10)
 	private String b_time;		//varchar(10)
 	private String b_username;	//varchar(125)
+	
+	// tbl_user table에서 가져온 데이터
+	private String nickname;
+	
 	private String b_subject;	//varchar(125)
 	private String b_content;	//text
 	private int b_count;		//int
