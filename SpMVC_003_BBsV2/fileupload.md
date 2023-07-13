@@ -8,12 +8,15 @@
 - form의 `enctype="multipart/form-data"`는 text 데이터와 none text 데이터를 하나의 프로토콜 payload에 묶어서 보내는 html의 규격이다.
 
 ## Spring Controller에서 multipart/form-data 받기
-- Spring Controller는 form에서 전달되는 모든 데이터를 Text로만 인식한다.
+- Spring Controller(Dispatcher Servlet)는 form에서 전달되는 모든 데이터를 Text로만 인식한다.
 - form에서 아무리 `multipart/form-data` 형식으로 데이터를 보내도 Spring Controller에서는 그러한 데이터를 수신(인식)하지 못한다.
 - Spring Project에서 파일 업로드 기능을 구현하기 위해서는 다음의 2가지 dependency를 설치해야 한다.
+- 현재 `commons-fileupload` 최신버전인 1.5 버전을 사용할 경우는 `commons-io`를 같이 설치하지 않아도 된다.
+- `commons-fileupload` `1.5`버전을 설치하면 `commons-io` 2.11.0 버전이 의존성 관계에 적합한 도구로 자동 설치된다.
 
 ```xml
 <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<!-- 2023.07.12 현재 -->
 <dependency>
 	<groupId>commons-fileupload</groupId>
 	<artifactId>commons-fileupload</artifactId>
@@ -27,3 +30,8 @@
 	<version>2.13.0</version>
 </dependency>
 ```
+
+## Spring Project에서 파일 업로드를 하기 위한 `context` 설정
+- 파일의 업로드 허용 크기를 지정하여 bean을 하나 생성해 두면 된다.
+- 생성한 bean을 직접 핸들링 하지 않고, 이 bean은 Dispatcher Servlet이 알아서 사용하는 bean
+- `root-context.xml`을 사용하여 전역적(global public) 세팅을 수행한다.
