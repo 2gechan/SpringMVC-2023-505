@@ -32,7 +32,7 @@ public interface FileService {
 
 	public String fileUp(MultipartFile file) throws Exception;
 	
-	public List<String> fileUp(MultipartHttpServletRequest files) throws Exception;
+	public List<String> filesUp(MultipartHttpServletRequest files) throws Exception;
 	
 	public String delete(String fileName);
 }

@@ -1,6 +1,7 @@
 package com.callor.bbs.service.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.core.io.Resource;
@@ -9,12 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.callor.bbs.config.QualifierConfig;
 import com.callor.bbs.service.FileService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Service
+@Service(QualifierConfig.SERIVCE.FILE_V1)
 public class FileServiceImplV1 implements FileService {
 
 	// 서버의 폴더 등 자원(Resource)에 접근할 때 사용할 객체
@@ -56,7 +58,7 @@ public class FileServiceImplV1 implements FileService {
 	}
 
 	@Override
-	public List<String> fileUp(MultipartHttpServletRequest files) throws Exception {
+	public List<String> filesUp(MultipartHttpServletRequest files) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
