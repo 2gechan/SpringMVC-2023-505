@@ -14,13 +14,13 @@
 	<form action="" class="main" method="POST"
 		enctype="multipart/form-data">
 		<div>
-			<label>작성일자</label><input name="b_date" />
+			<label>작성일자</label><input value="${BBS.b_date}" name="b_date" />
 		</div>
 		<div>
-			<label>작성시각</label><input name="b_time" />
+			<label>작성시각</label><input value="${BBS.b_time}" name="b_time" />
 		</div>
 		<div>
-			<label>작성자</label><input name="b_username" />
+			<label>작성자</label><input value="${BBS.b_username}" name="b_username" />
 		</div>
 		<div>
 			<label>제목</label><input name="b_subject" />
@@ -28,9 +28,14 @@
 		<div>
 			<label>내용</label><input name="b_content" />
 		</div>
+
 		<div>
-			<label>이미지</label><input name="b_file" type="file"
-				accept="image/*, audio/*, video/*">
+			<label>대표이미지</label><input name="b_file" type="file"
+				accept="image/*, audio/*, video/*" />
+		</div>
+		<div>
+			<label>이미지 리스트</label><input name="b_images" multiple="multiple" type="file"
+				accept="image/*" />
 		</div>
 		<div class="button-box">
 			<button>저장하기</button>

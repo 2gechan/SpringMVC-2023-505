@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>이미지 겔러리</title>
-<link href="${rootPath }/static/css/main.css?2023-07-12-001" rel="stylesheet">
+<link href="${rootPath }/static/css/main.css?2023-07-17-002" rel="stylesheet">
 
 </head>
 <body>
@@ -30,7 +30,7 @@
 				<td>${BBS.b_time}</td>
 				<td>
 				<a href="${rootPath}/search/user?username=${BBS.b_username}">
-					${BBS.nickname}
+					${BBS.b_username}
 				</a>
 				</td>
 				<td>

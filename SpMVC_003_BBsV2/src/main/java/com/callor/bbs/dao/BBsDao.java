@@ -17,6 +17,8 @@ public interface BBsDao {
 			+ " FROM tbl_bbs,tbl_user "
 			+ " WHERE b_username = username AND b_seq = #{seq}")
 	public BBsDto findById(String seq);
+	
+	public int insert(BBsDto bbsDto);
 
 }
 

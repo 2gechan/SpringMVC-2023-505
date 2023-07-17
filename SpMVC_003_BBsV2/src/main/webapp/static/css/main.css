@@ -15,6 +15,11 @@ body {
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 header.main {
   text-align: center;
 }
@@ -22,12 +27,15 @@ header.main {
 table.main {
   width: 60%;
   margin: 10px auto;
+  text-align: center;
+  border-collapse: collapse;
 }
 
 div.main.button-box {
   width: 60%;
   margin: 10px auto;
   text-align: right;
+  border-radius: 5px;
 }
 
 div.main.button-box a {
@@ -41,4 +49,12 @@ div.main.button-box a {
 div.main.button-box a:hover {
   background-color: #efefef;
   color: black;
+}
+
+table tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table tr:hover {
+  background-color: #eee;
 }
