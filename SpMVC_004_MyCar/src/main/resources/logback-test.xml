@@ -28,7 +28,7 @@ logback은 src/main/resources 폴더에서
 	<!-- SpringFramework 도구들이 출력하기 -->
     <logger name="org.springframework" level="INFO" />
    	<!-- 현재 프로젝트(com.callor.car base-package 에서) -->
-    <logger name="com.callor.callor" level="DEBUG"  additivity="false">
+    <logger name="com.callor.car" level="DEBUG"  additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 

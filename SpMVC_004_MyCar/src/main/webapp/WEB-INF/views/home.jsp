@@ -8,6 +8,14 @@
 <meta charset="UTF-8">
 <title>MY CAR</title>
 <link href="${rootPath}/static/css/main.css" rel="stylesheet" />
+<link href="${rootPath}/static/css/input.css" rel="stylesheet" />
+<script type="text/javascript">
+	// JS 파일에서 rootPath 정보를 사용할 수 있도록 전역(global) 변수로 선언
+	var rootPath = "${rootPath}"
+</script>
+<script type="text/javascript" src="${rootPath}/static/js/main_input.js"></script>
+<script type="text/javascript"
+	src="${rootPath}/static/js/main_input_validation.js"></script>
 </head>
 <body>
 	<header class="main">

@@ -11,7 +11,7 @@
 
 	<!-- dataSource -->
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.cj.Driver" />
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/mycardb" />
 		<property name="username" value="root" />
@@ -27,7 +27,7 @@
 		<property name="typeAliasesPackage"
 			value="com.callor.car.models" />
 		<property name="mapperLocations"
-			value="/WEB-INF/spring/appServlet/mapper/*-mapper.xml" />
+			value="/WEB-INF/spring/mapper/*-mapper.xml" />
 	</bean>
 
 	<!-- SqlSessionTemplate -->
