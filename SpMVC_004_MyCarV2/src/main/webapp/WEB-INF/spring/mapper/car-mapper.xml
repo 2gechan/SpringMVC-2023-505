@@ -10,4 +10,17 @@
 		order by c_sdate desc, c_stime desc
 		LIMIT 1
 	</select>
+	<insert id="insert">
+		insert into tbl_carmanager
+		(c_carnum, c_qty,
+		c_username, c_sdate, c_stime, c_skm)
+		values
+		(#{c_carnum}, #{c_qty},
+		#{c_username}, #{c_sdate}, #{c_stime}, #{c_skm})
+	</insert>
+
+	<select id="selectAll">
+		select * from tbl_carmanager
+		order by c_edate desc, c_etime desc
+	</select>
 </mapper> 

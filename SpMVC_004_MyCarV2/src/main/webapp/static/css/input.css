@@ -1,16 +1,18 @@
 @charset "UTF-8";
 
 form.main {
-  width: 50%;
+  width: 70%;
   margin: 10px auto;
   display: flex;
   /* flex-wrap : wrap 화면에서 item이 벗어났을 때 자동 줄바꿈 */
-  flex-wrap: wrap;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 form.main div {
-  flex: 1;
-  margin: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 
 form.main input {
