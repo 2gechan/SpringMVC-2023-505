@@ -12,4 +12,5 @@ public interface CarDao {
 
 	public List<CarDto> selectAll();
 
+	public void create_carm_table(String dumy);
 }
