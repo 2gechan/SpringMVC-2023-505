@@ -5,20 +5,24 @@
 
 <mapper namespace="com.callor.car.persistance.UserDao">
 
-	<select id="selectAll"></select>
-	<select id="findTachoByCarNum"></select>
-	<insert id="insert"></insert>
-	<delete id="delete"></delete>
+	<insert id="insert">
+		insert into tbl_users(username, password, u_name, u_nickname, u_tel, u_role)
+		values(#{username}, #{password}, #{u_name}, #{u_nickname}, #{u_tel}, #{u_role})
+	</insert>
 	<update id="update"></update>
 
+	<select id="selectAll"></select>
 	<select id="create_user_table">
 		create table IF NOT EXISTS tbl_users(
-		username VARCHAR(15) PRIMARY KEY,
+		username
+		VARCHAR(15) PRIMARY KEY,
 		password VARCHAR(255) NOT NULL,
-		u_name VARCHAR(20) NOT NULL,
+		u_name
+		VARCHAR(20) NOT NULL,
 		u_nickname VARCHAR(20),
 		u_tel VARCHAR(15),
-		u_role VARCHAR(15) NOT NULL
+		u_role
+		VARCHAR(15) NOT NULL
 		)
 	</select>
 </mapper> 

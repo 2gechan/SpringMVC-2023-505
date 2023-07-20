@@ -75,8 +75,21 @@ form.user button {
   border-radius: 5px;
 }
 
+form.user button:hover {
+  cursor: pointer;
+}
+
+form.user button:active {
+  background-color: rgb(124, 124, 216);
+}
+
 form.user a {
   text-decoration: none;
   color: cornflowerblue;
   font-size: 0.7rem;
+}
+
+form.user div.error {
+  background-color: red;
+  color: white;
 }
