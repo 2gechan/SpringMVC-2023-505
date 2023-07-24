@@ -23,7 +23,7 @@
 				<c:forEach items="${BOOKS}" var="book">
 					<tr>
 						<td>${book.b_code}</td>
-						<td>${book.b_name}</td>
+						<td><a href="${rootPath}/book/${book.b_code}/detail">${book.b_name}</a></td>
 						<td>${book.b_auther}</td>
 						<td>${book.b_comp}</td>
 						<td>${book.b_rprice}</td>
@@ -36,7 +36,10 @@
 				</tr>
 			</c:otherwise>
 		</c:choose>
-
 	</table>
+	<div class="book button">
+		<a href="${rootPath}/">처음으로</a>
+		<a href="${rootPath}/book/input">도서정보 추가</a>
+	</div>
 </body>
 </html>

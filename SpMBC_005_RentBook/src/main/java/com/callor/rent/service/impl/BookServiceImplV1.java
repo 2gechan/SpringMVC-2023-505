@@ -24,4 +24,22 @@ public class BookServiceImplV1 implements BookService {
 		return books;
 	}
 
+	@Override
+	public int insert(BookDto bookDto) {
+		
+		return bookDao.insert(bookDto);
+	}
+
+	@Override
+	public BookDto findById(String bcode) {
+		
+		return bookDao.findById(bcode);
+	}
+
+	@Override
+	public int update(BookDto bookDto) {
+		// TODO Auto-generated method stub
+		return bookDao.update(bookDto);
+	}
+
 }
