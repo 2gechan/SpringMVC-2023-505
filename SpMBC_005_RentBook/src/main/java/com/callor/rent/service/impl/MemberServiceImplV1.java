@@ -60,8 +60,14 @@ public class MemberServiceImplV1 implements MemberService {
 
 	@Override
 	public MemberDto findById(String mcode) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return memberDao.findById(mcode);
+	}
+
+	@Override
+	public int update(MemberDto memberDto) {
+		
+		return memberDao.update(memberDto);
 	}
 
 }

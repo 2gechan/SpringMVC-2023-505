@@ -30,4 +30,6 @@ public interface MemberDao {
 
 	@Select("select * from tbl_members where m_name = #{name} AND m_tel = #{tel}")
 	public MemberDto findNameAndTel(@Param("name") String name, @Param("tel") String tel);
+
+	public int update(MemberDto memberDto);
 }

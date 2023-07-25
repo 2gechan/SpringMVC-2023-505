@@ -19,4 +19,10 @@
 		M_ADDR VARCHAR(125)
 		)
 	</select>
+	
+	<update id="update">
+		update tbl_members set
+		M_NAME = #{m_name}, M_TEL = #{m_tel}, M_ADDR = #{m_addr}
+		where M_CODE = #{m_code}
+	</update>
 </mapper> 

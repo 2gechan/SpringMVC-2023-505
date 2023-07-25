@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,10 +58,28 @@ public class MemberController {
 
 	@RequestMapping(value = "/{mcode}/detail", method = RequestMethod.GET)
 	public String detail(@PathVariable("mcode") String mcode, Model model) {
-		
+
 		MemberDto memberDto = memberService.findById(mcode);
+		model.addAttribute("MEMBER", memberDto);
 
 		return "member/detail";
+	}
+
+	@RequestMapping(value = "/{mcode}/update", method = RequestMethod.GET)
+	public String update(@PathVariable("mcode") String mcode,Model model) {
+		
+		MemberDto meberDto = memberService.findById(mcode);
+		model.addAttribute("MEMBER", meberDto);
+
+		return "member/update";
+	}
+	
+	@RequestMapping(value = "/{mcode}/update", method = RequestMethod.POST)
+	public String update(@PathVariable("mcode") String mcode, MemberDto memberDto) {
+		
+		int result = memberService.update(memberDto);
+		
+		return "redirect:/member";
 	}
 
 	/*
