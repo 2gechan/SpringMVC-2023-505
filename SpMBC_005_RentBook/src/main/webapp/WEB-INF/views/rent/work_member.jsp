@@ -10,21 +10,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<f:form action="">
+	<h1>회원검색</h1>
+	<div>
+		<p>도서코드 : ${RENT_WORK.rent_bcode}, 도서명 : ${RENT_WORK.b_name},
+			도서출판사 : ${RENT_WORK.b_comp}</p>
+	</div>
+	<f:form action="${rootPath}/rent/member" modelAttribute="RENT_WORK">
 		<div>
-			<label>회원코드</label><input value="${MEMBER.m_code}" readonly />
+			<label>회원명</label>
+			<f:input path="m_name" />
 		</div>
 		<div>
-			<label>회원명</label><input value="${MEMBER.m_name}" />
+			<label>회원코드</label>
+			<f:input path="rent_mcode" />
 		</div>
 		<div>
-			<label>전화번호</label><input value="${MEMBER.m_tel}" />
+			<label>전화번호</label>
+			<f:input path="m_tel" />
 		</div>
 		<div>
-			<label>주소</label><input value="${MEMBER.m_addr}" />
-		</div>
-		<div>
-			<button type="submit">수정하기</button>
+			<button>다음 >></button>
 		</div>
 	</f:form>
 </body>

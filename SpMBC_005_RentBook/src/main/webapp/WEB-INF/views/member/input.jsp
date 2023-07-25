@@ -11,7 +11,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원정보 추가</h1>
+	<%
+	/*
+	 * 현재 member/input.jsp 는 /member/insert와 /member/update에서
+	 * 사용하는 form 입력화면이다
+	 * insert에서는 MEMBER 객체를 새로만들어(데이터가 모두 blank) input.jsp에
+	 * 보내고 있으며, update에서는 bcode를 가지고 findById() method를 호출하여
+	 * 데이터를 SELECT하고 그 데이터를 input.jsp로 보내고 있다.
+	 * 
+	 * MEMBER.m_code 데이터는 insert일 때는 empty(blank)이고 update 일 때는 아니다.
+	 * 
+	 */
+	%>
+	
+	<h1>회원정보 ${empty MEMBER.m_code ? '추가' : '수정'}</h1>
 	<c:if test="${not empty MESSAGE && MESSAGE == 'NAME_TEL'}">
 		<h2>!! 이름과 전화번호 데이터가 이미 등록되어 있습니다.</h2>
 	</c:if>
@@ -28,10 +41,7 @@
 			<label>주소</label>
 			<f:input path="m_addr" />
 		</div>
-		<div>
-			<label>회원코드</label>
-			<f:input path="m_code" />
-		</div>
+
 		<div>
 			<button type="button">
 				<a href="${rootPath}/member">리스트로</a>

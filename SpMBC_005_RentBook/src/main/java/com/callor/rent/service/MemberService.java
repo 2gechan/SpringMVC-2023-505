@@ -12,6 +12,6 @@ public interface MemberService {
 
 	public MemberDto findById(String mcode);
 
-	public int update(MemberDto memberDto);
+	public int update(MemberDto memberDto) throws Exception;
 
 }

@@ -11,16 +11,16 @@
 <body>
 	<h1>회원정보</h1>
 	<div>
-		<label>회원코드</label><strong>${MEMBER.m_code}</strong>
+		<strong>회원코드 : </strong><span>${MEMBER.m_code}</span>
 	</div>
 	<div>
-		<label>회원명</label><strong>${MEMBER.m_name}</strong>
+		<strong>회원명 : </strong><span>${MEMBER.m_name}</span>
 	</div>
 	<div>
-		<label>전화번호</label><strong>${MEMBER.m_tel}</strong>
+		<strong>전화번호 : </strong><span>${MEMBER.m_tel}</span>
 	</div>
 	<div>
-		<label>주소</label><strong>${MEMBER.m_addr}</strong>
+		<strong>주소 : </strong><span>${MEMBER.m_addr}</span>
 	</div>
 	<div><button type="button"><a href="${rootPath}/member/${MEMBER.m_code}/update">수정하기</a></button></div>
 </body>

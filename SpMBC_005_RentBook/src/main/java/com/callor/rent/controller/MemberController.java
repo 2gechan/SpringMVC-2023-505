@@ -71,15 +71,26 @@ public class MemberController {
 		MemberDto meberDto = memberService.findById(mcode);
 		model.addAttribute("MEMBER", meberDto);
 
-		return "member/update";
+		return "member/input";
 	}
 	
 	@RequestMapping(value = "/{mcode}/update", method = RequestMethod.POST)
-	public String update(@PathVariable("mcode") String mcode, MemberDto memberDto) {
+	public String update(@PathVariable("mcode") String mcode, @ModelAttribute("MEMBER") MemberDto memberDto, Model model) {
 		
-		int result = memberService.update(memberDto);
-		
-		return "redirect:/member";
+		memberDto.setM_code(mcode);
+		try {
+			int result = memberService.update(memberDto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			// console에 Exception log 출력하기
+			e.printStackTrace();
+			String message = e.getMessage();
+			model.addAttribute("MESSAGE", message);
+			return "member/input";
+		}
+		// @PathVariable로 받은 mcode 데이터를
+		// redirect 코드에 그대로 적용하기
+		return "redirect:/member/{mcode}/detail";
 	}
 
 	/*

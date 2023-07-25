@@ -23,3 +23,18 @@ insert into tbl_books
 values('001', '테스트도서명', '테스트저자명', '테스트출판사', 2023, 17000, 700);
 
 select * from tbl_books;
+
+create table tbl_members (
+	M_CODE	VARCHAR(6)		PRIMARY KEY,
+	M_NAME	VARCHAR(125)	NOT NULL,
+	M_TEL	VARCHAR(15)		NOT NULL,
+	M_ADDR	VARCHAR(125)
+);
+
+desc tbl_members;
+
+drop table tbl_members;
+
+show tables;
+
+select * from tbl_members;
