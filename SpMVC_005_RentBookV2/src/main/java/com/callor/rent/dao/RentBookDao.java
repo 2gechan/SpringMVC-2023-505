@@ -2,13 +2,10 @@ package com.callor.rent.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
-
 import com.callor.rent.models.RentBookVO;
 
 public interface RentBookDao {
 	
-	@Select("select * from tbl_rent_book order by rent_seq")
 	public List<RentBookVO> selectAll();
 	
 	public RentBookVO findById(long id);
