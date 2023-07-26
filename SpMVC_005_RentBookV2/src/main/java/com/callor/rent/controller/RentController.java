@@ -58,7 +58,7 @@ public class RentController {
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String home(Model model) {
 
-		List<RentBookDto> rentList = rentBookService.selectAll();
+		List<RentBookVO> rentList = rentBookService.selectAll();
 		model.addAttribute("RENTLIST", rentList);
 
 		return "rent/home";
@@ -110,7 +110,7 @@ public class RentController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String work_insert(@ModelAttribute("RENT_WORK") RentBookVO rentBookVO, SessionStatus session) {
 		log.debug("전달된 데이터 {}", rentBookVO);
-		
+		int result = rentBookService.insert(rentBookVO);
 		/*
 		 * SessionAttributes에 보관중인 객체(데이터)를 모두 사용한 후에는
 		 * 반드시 데이터를 Clear 시키는 절차가 필요하다

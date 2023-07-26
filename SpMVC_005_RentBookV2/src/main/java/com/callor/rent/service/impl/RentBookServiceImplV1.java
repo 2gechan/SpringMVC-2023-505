@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.callor.rent.dao.RentBookDao;
 import com.callor.rent.models.RentBookDto;
+import com.callor.rent.models.RentBookVO;
 import com.callor.rent.service.RentBookService;
 
 @Service
@@ -17,15 +18,15 @@ public class RentBookServiceImplV1 implements RentBookService {
 	}
 
 	@Override
-	public List<RentBookDto> selectAll() {
-		List<RentBookDto> rentList = rentBookDao.selectAll();
+	public List<RentBookVO> selectAll() {
+		List<RentBookVO> rentList = rentBookDao.selectAll();
 		return rentList;
 	}
 
 	@Override
-	public int insert(RentBookDto rentBookDto) {
+	public int insert(RentBookVO rentBookVO) {
 		// TODO Auto-generated method stub
-		return rentBookDao.insert(rentBookDto);
+		return rentBookDao.insert(rentBookVO);
 	}
 
 }

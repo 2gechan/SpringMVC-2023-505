@@ -3,11 +3,12 @@ package com.callor.rent.service;
 import java.util.List;
 
 import com.callor.rent.models.RentBookDto;
+import com.callor.rent.models.RentBookVO;
 
 public interface RentBookService {
 
-	public List<RentBookDto> selectAll();
+	public List<RentBookVO> selectAll();
 
-	public int insert(RentBookDto rentBookDto);
+	public int insert(RentBookVO rentBookVO);
 
 }

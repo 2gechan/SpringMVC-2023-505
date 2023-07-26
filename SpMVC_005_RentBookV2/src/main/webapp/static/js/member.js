@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mNameSearch = async (e) => {
     const mName = e.target.value;
 
-    if (mName.length < 2) {
+    if (mName.length < 1) {
       result_list.style.display = "none";
       return false;
     }

@@ -14,15 +14,19 @@
 		RENT_BCODE VARCHAR(13) NOT NULL,
 		RENT_MCODE VARCHAR(6) NOT NULL,
 		RENT_RETURN_YN VARCHAR(1),
-		RENT_POINT INT,
+		RENT_POINT
+		INT,
 		RENT_PRICE INT
 		)
 	</select>
 
-	<insert id="insert">
-		insert into tbl_rent_book(RENT_DATE, RENT_RETURN_DATE, RENT_BCODE,
-		RENT_MCODE, RENT_RETURN_YN, RENT_POINT, RENT_PRICE)
-		values(#{rent_date}, #{rent_return_date}, #{rent_bcode},
-		#{rent_mcode}, #{rent_return_yn}, #{rent_point}, #{rent_price})
+	<insert id="insert" parameterType="RentBookVO">
+		insert into
+		tbl_rent_book
+		(RENT_DATE, RENT_RETURN_DATE, RENT_BCODE,
+		RENT_MCODE, RENT_RETURN_YN, RENT_PRICE)
+		values
+		(#{rent_date}, #{rent_return_date}, #{rent_bcode},
+		#{rent_mcode}, 'N', #{rent_price})
 	</insert>
 </mapper> 
