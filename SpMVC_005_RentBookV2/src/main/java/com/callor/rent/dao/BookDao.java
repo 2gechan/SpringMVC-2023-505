@@ -11,6 +11,8 @@ public interface BookDao {
 	@Select("select * from tbl_books order by b_name")
 	public List<BookDto> selectAll();
 	
+	public List<BookDto> selectPage();
+	
 	@Select("select * from tbl_books where b_code = #{id}")
 	public BookDto findById(String id);
 	
