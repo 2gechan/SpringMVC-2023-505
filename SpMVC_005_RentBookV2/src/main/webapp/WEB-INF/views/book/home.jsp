@@ -39,13 +39,20 @@
 	</table>
 	<div class="list pagination">
 		<ul>
-			<li>&lt;</li>
+			<c:if test="${PAGINATION.firstPageNum > 1 }">
+				<li><a href="${rootPath}/book?page=1">&#124;&lt;</a></li>
+				<li>&lt;</li>
+			</c:if>
 			<c:forEach begin="${PAGINATION.firstPageNum}"
 				end="${PAGINATION.lastPageNum}" var="PAGE">
-				<li class="${PAGINATION.pageNum == PAGE ? 'active' : '' }"><a href="${rootPath}/book?page=${PAGE}">${PAGE}</a></li>
+				<li class="${PAGINATION.pageNum == PAGE ? 'active' : '' }"><a
+					href="${rootPath}/book?page=${PAGE}">${PAGE}</a></li>
 			</c:forEach>
-			<li>&gt;</li>
-			<li><a href="${rootPath}/book?page=${PAGINATION.finalPageNum}">${PAGINATION.finalPageNum}</a></li>
+			<c:if test="${PAGINATION.lastPageNum <  PAGINATION.finalPageNum }">
+				<li>&gt;</li>
+				<li><a href="${rootPath}/book?page=${PAGINATION.finalPageNum}">&gt;&#124;</a>
+				</li>
+			</c:if>
 		</ul>
 	</div>
 	<div class="book button">
