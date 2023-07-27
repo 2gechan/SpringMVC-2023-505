@@ -37,9 +37,20 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
+	<div class="list pagination">
+		<ul>
+			<li>&lt;</li>
+			<c:forEach begin="${PAGINATION.firstPageNum}"
+				end="${PAGINATION.lastPageNum}" var="PAGE">
+				<li class="${PAGINATION.pageNum == PAGE ? 'active' : '' }"><a href="${rootPath}/book?page=${PAGE}">${PAGE}</a></li>
+			</c:forEach>
+			<li>&gt;</li>
+			<li><a href="${rootPath}/book?page=${PAGINATION.finalPageNum}">${PAGINATION.finalPageNum}</a></li>
+		</ul>
+	</div>
 	<div class="book button">
-		<a href="${rootPath}/">처음으로</a>
-		<a href="${rootPath}/book/input">도서정보 추가</a>
+		<a href="${rootPath}/">처음으로</a> <a href="${rootPath}/book/input">도서정보
+			추가</a>
 	</div>
 </body>
 </html>
