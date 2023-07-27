@@ -41,21 +41,37 @@
 		<ul>
 			<c:if test="${PAGINATION.firstPageNum > 1 }">
 				<li><a href="${rootPath}/book?page=1">&#124;&lt;</a></li>
-				<li>&lt;</li>
 			</c:if>
+
+
+			<c:if test="${PAGINATION.pageNum > 1 }">
+				<li><a href="${rootPath}/book?page=${PAGINATION.pageNum -1}&search=${SEARCH}">&lt;</a></li>
+			</c:if>
+			
 			<c:forEach begin="${PAGINATION.firstPageNum}"
 				end="${PAGINATION.lastPageNum}" var="PAGE">
 				<li class="${PAGINATION.pageNum == PAGE ? 'active' : '' }"><a
-					href="${rootPath}/book?page=${PAGE}">${PAGE}</a></li>
+					href="${rootPath}/book?page=${PAGE}&search=${SEARCH}">${PAGE}</a></li>
 			</c:forEach>
-			<c:if test="${PAGINATION.lastPageNum <  PAGINATION.finalPageNum }">
-				<li>&gt;</li>
-				<li><a href="${rootPath}/book?page=${PAGINATION.finalPageNum}">&gt;&#124;</a>
+			
+			<c:if test="${PAGINATION.pageNum < PAGINATION.finalPageNum }">
+				<li><a href="${rootPath}/book?page=${PAGINATION.pageNum +1}&search=${SEARCH}">&gt;</a></li>
+			</c:if>
+			
+			<c:if test="${PAGINATION.lastPageNum < PAGINATION.finalPageNum }">
+				<li><a href="${rootPath}/book?page=${PAGINATION.finalPageNum}&search=${SEARCH}">&gt;&#124;</a>
 				</li>
 			</c:if>
 		</ul>
 	</div>
-	<div class="book button">
+	<div class="list book search">
+		<form>
+			<input name="page" hidden="hidden" value="${PAGINATION.pageNum}"/>
+			<input name="search" placeholder="검색어 입력 후 엔터" />
+			<button>검색</button>
+		</form>
+	</div>
+	<div class="list book button">
 		<a href="${rootPath}/">처음으로</a> <a href="${rootPath}/book/input">도서정보
 			추가</a>
 	</div>

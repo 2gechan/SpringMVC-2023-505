@@ -9,7 +9,7 @@ import com.callor.rent.models.BookDto;
 
 public interface BookDao {
 
-	@Select("select * from tbl_books order by b_name")
+	@Select("select * from tbl_books order by b_code")
 	public List<BookDto> selectAll();
 
 	@Select("select * from tbl_books limit #{limit} offset #{offset}")
@@ -39,5 +39,12 @@ public interface BookDao {
 
 	@Select("select count(*) from tbl_books")
 	public int selectCount();
+
+	public int selectSearchCount(List<String> searchList);
+
+	public List<BookDto> selectSearchPage(
+			@Param("limit") int limitCount,
+			@Param("offset") int offsetNum,
+			@Param("list") List<String> searchList);
 
 }

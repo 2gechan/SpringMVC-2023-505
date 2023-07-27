@@ -21,7 +21,7 @@ public class PageDto {
 	
 	private int firstPageNum; // 전체 데이터의 첫번째 페이지 번호
 	
-	private int lastPageNum;
+	private int lastPageNum; // 전체 데이터의 마지막 페이지 번호
 	
 	/*
 	 * totalCount가 153 이라고 하자
