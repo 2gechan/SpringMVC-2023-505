@@ -25,7 +25,7 @@ public class BBsServiceImplV1 implements BBsService {
 	@Override
 	public List<BBsDto> selectAll() {
 
-		return null;
+		return bbsDao.selectAll();
 	}
 
 	/*
@@ -60,6 +60,12 @@ public class BBsServiceImplV1 implements BBsService {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public BBsDto findById(long b_seq) {
+		
+		return bbsDao.findById(b_seq);
 	}
 
 }

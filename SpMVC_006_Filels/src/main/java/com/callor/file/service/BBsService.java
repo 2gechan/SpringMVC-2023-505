@@ -15,4 +15,6 @@ public interface BBsService {
 					MultipartFile b_file,
 					MultipartHttpServletRequest b_files);
 
+	public BBsDto findById(long b_seq);
+
 }

@@ -1,5 +1,6 @@
 package com.callor.file.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
@@ -15,23 +16,24 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.file.model.BBsDto;
 import com.callor.file.service.BBsService;
-import com.callor.file.service.FileService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
 public class HomeController {
-	
-	
+
 	protected final BBsService bbsService;
+
 	public HomeController(BBsService bbsService) {
-		
+
 		this.bbsService = bbsService;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		List<BBsDto> bbsList = bbsService.selectAll();
+		model.addAttribute("BBS_LIST", bbsList);
 		return "home";
 	}
 
@@ -41,20 +43,27 @@ public class HomeController {
 	public String insert(@ModelAttribute("BBS") BBsDto bbsDto) {
 		return "input";
 	}
-	
+
 	@PostMapping(value = "/insert")
-	public String insert(@RequestParam("b_file") MultipartFile b_file,
-			MultipartHttpServletRequest b_files , 
+	public String insert(@RequestParam("b_file") MultipartFile b_file, MultipartHttpServletRequest b_files,
 			@ModelAttribute("BBS") BBsDto bbsDto, Model model) {
-		
+
 		log.debug("파일 {}", b_file);
 		log.debug("파일들 {}", b_files);
-		
+
 		bbsService.insert(bbsDto, b_file, b_files);
-		
+
 		return "redirect:/";
 	}
-	
+
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(@ModelAttribute("BBS") BBsDto bbsDto, @RequestParam(value = "b_seq", required = false, defaultValue = "0") long b_seq, Model model) {
+		bbsDto = bbsService.findById(b_seq);
+		model.addAttribute("BBS",bbsDto);
+
+		return "detail";
+	}
+
 	@ModelAttribute("BBS")
 	public BBsDto newBBsDto() {
 		return BBsDto.builder().build();
