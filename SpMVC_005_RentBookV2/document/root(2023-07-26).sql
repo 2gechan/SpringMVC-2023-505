@@ -46,3 +46,9 @@ create table tbl_rent_book(
 select * from tbl_books
 order by b_code
 limit 10  offset 50;
+
+-- 다중검색
+select count(*) from tbl_books
+where b_name like concat('%', '부자', '%') or
+b_name like concat('%', '행복', '%') or
+b_name like concat('%', '부동산', '%');
