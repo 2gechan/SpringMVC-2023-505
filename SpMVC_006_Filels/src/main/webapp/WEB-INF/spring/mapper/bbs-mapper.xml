@@ -14,6 +14,20 @@
 		select *
 		from tbl_bbs where b_seq = #{id}
 	</select>
+	
+	<update id="update" parameterType="BBsDto">
+	update tbl_bbs set
+		b_title = #{b_title},
+		b_content = #{b_content},
+		b_nickname = #{b_nickname},
+		b_password = #{b_password},
+		b_ccode = #{b_ccode},
+		b_date = #{b_date},
+		b_viewcount = #{b_viewcount},
+		b_image = #{b_image},
+		b_origin_image = #{b_origin_image}
+		where b_seq = #{b_seq}
+	</update>
 
 	<insert id="insert">
 		insert into tbl_bbs(
@@ -24,6 +38,13 @@
 		#{b_title},	#{b_content}, #{b_nickname},
 		#{b_password}, #{b_ccode}, #{b_date},
 		#{b_viewcount},	#{b_image},	#{b_origin_image})
+		<!--
+		게시판이 insert 된 후 새로 생성된 b_seq 값을 java 코드에서 조회
+		할 수 있도록 return 하기
+		 -->
+		<selectKey keyProperty="b_seq" order="AFTER" resultType="Long">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
 
 	<select id="create_bbs_table">

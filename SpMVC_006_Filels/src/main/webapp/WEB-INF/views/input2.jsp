@@ -10,12 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<f:form modelAttribute="BBS" enctype="multipart/form-data">
-		<f:input placeholder="제목" path="b_title" />
-		<f:input placeholder="내용" path="b_content" />
+	<form action="" method="POST" enctype="multipart/form-data">
+		<input placeholder="제목" name="b_title" />
+		<input placeholder="내용" name="b_content" />
 		<input placeholder="대표이미지" name="b_file" type="file" accept="image/*" />
 		<input placeholder="이미지들" name="b_files" type="file" accept="image/*" multiple="multiple" />
 		<button>저장</button>
-	</f:form>
+	</form>
 </body>
 </html>

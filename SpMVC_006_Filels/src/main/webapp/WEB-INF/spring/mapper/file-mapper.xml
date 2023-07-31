@@ -5,12 +5,38 @@
 
 <mapper namespace="com.callor.file.dao.FileDao">
 
+	<select id="findById">
+		select * from tbl_files where f_seq = #{id}
+	</select>
+
+	<delete id="delete">
+		delete from tbl_files where f_seq = #{id}
+	</delete>
+
+	<insert id="insert">
+		insert into tbl_files (
+		f_bseq,
+		f_image,
+		f_origin_image
+		)
+		<foreach collection="list" item="DTO" separator=", "
+			open="VALUES">
+			(
+			#{b_seq},
+			#{DTO.f_image},
+			#{DTO.f_origin_image}
+			)
+		</foreach>
+	</insert>
+
 	<select id="create_file_table">
-		create table tbl_file (
-		f_seq bigint primary key auto_increment,
+		create table tbl_files (
+		f_seq bigint primary key
+		auto_increment,
 		f_bseq bigint,
 		f_image varchar(255),
-		f_origin_image varchar(255)
+		f_origin_image
+		varchar(255)
 		)
 	</select>
 </mapper> 
