@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,9 +15,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-
+@Builder
 @Entity
-@Table(name = "tbl_test", schema = "jpaDB")
+@Table(name = "tbl_users", schema = "jpaDB")
 public class UserDto {
 
 	@Id
@@ -25,11 +26,13 @@ public class UserDto {
 
 	@Column(name = "username", columnDefinition = "VARCHAR(20)")
 	private String username; // varchar(255)
-	
+
+	@Column(name = "password", columnDefinition = "VARCHAR(125)")
+	private String password; // varchar(255)
+
 	private String email; // varchar(255)
 	private String nickname; // varchar(255)
-	private String password; // varchar(255)
-	
+
 	@Column(nullable = true)
 	private int age; // int
 
